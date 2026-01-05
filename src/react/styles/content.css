@@ -1,0 +1,252 @@
+/* Content Component Styles */
+
+.layout-content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-secondary-2);
+  padding-top: 32px;
+  padding-left: 16px;
+}
+
+.request-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  
+}
+
+.request-method-badge {
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.request-method-badge.post {
+  background: var(--color-accent);
+  color: #000;
+}
+
+.request-path-large {
+  color: var(--font-color);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.request-timestamp {
+  color: var(--font-color);
+  font-size: 12px;
+}
+
+.content-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-badge.success {
+  background: var(--color-accent);
+  color: #000;
+}
+
+/* Tabs */
+.content-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-secondary-2);
+  min-height: 48px;
+  padding-top: 38px;
+}
+
+.tabs-group {
+  display: flex;
+  gap: 0;
+}
+
+
+.tab {
+  padding: 14px 18px;
+  background: transparent;
+  color: var(--font-color);
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  color: var(--font-color);
+}
+
+.tab.active {
+  color: var(--font-color);
+  border-bottom-color: var(--color-quaternary);
+}
+
+.tab-count {
+  color: var(--font-color);
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+/* Code Viewer */
+.content-viewer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-primary);
+  padding: 20px;
+  overflow-y: hidden;
+
+}
+
+.viewer-controls {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-right: 56px;
+
+}
+
+.viewer-toggle {
+  padding: 6px 14px;
+  background: transparent;
+  color: var(--font-color);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+}
+
+.viewer-toggle:hover {
+  background: var(--color-tertiary);
+  color: var(--font-color);
+}
+
+.viewer-toggle.active {
+  background: var(--color-primary);
+  color: var(--font-color);
+  border-color: var(--font-color);
+}
+
+.code-block {
+  padding: 24px 36px;
+  background: var(--color-input) !important;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow: auto;
+  flex: 1;
+  border-radius: 14px;
+  margin: 0;
+}
+
+.code-block code {
+  padding: 0 !important;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  display: block;
+  
+}
+
+/* Ensure highlight.js styles are applied */
+.code-block code.hljs {
+  background: var(--color-input);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    padding: 12px 16px;
+  }
+
+  .request-info {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs)px;
+  }
+
+  .request-method-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .request-path-large {
+    font-size: 13px;
+    word-break: break-all;
+  }
+
+  .request-timestamp {
+    font-size: 11px;
+  }
+
+  .content-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .status-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .content-tabs {
+    padding: 0 16px;
+    min-height: 44px;
+    overflow-x: auto;
+  }
+
+  .tabs-group {
+    min-width: min-content;
+  }
+
+  .tab {
+    padding: 12px 14px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .tab-count {
+    font-size: 10px;
+  }
+
+  .viewer-controls {
+    gap: var(--spacing-xs);
+  }
+
+  .viewer-toggle {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .code-block {
+    padding: 16px;
+    font-size: 12px;
+  }
+}

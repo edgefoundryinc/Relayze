@@ -1,0 +1,79 @@
+/* Footer Component Styles */
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 64px;
+  height: 24px;
+  background-color: var(--color-footer);
+}
+
+.footer-usage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--font-color);
+  font-size: 13px;
+}
+
+.usage-label {
+  color: var(--font-color);
+}
+
+.usage-percentage {
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.btn-upgrade {
+  padding: 8px 18px;
+  background: transparent;
+  color: var(--font-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn-upgrade:hover {
+  background: var(--color-tertiary);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .layout-footer {
+    padding: 12px 15px;
+    min-height: 60px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 10px;
+  }
+
+  .footer-usage {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .usage-label {
+    font-size: 12px;
+  }
+
+  .usage-percentage {
+    font-size: 14px;
+  }
+
+  .btn-upgrade {
+    width: 100%;
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+}

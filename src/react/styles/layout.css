@@ -1,0 +1,126 @@
+/* Grid Layout Container */
+.layout-grid {
+  display: grid;
+  grid-template-columns: 496px 1fr;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas:
+    "nav nav"
+    "sidebar content"
+    "sidebar requests"
+    "footer footer";
+  height: 100vh;
+  width: 100vw;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* Navigation Bar - Spans full width */
+.layout-nav {
+  grid-area: nav;
+  background-color: var(--color-header);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Sidebar - Contains URL section */
+.layout-sidebar {
+  grid-area: sidebar;
+  background-color: var(--color-sidebar);
+  display: flex;
+  flex-direction: column;
+  grid-row: 2 / 4;
+  padding: 30px;
+  border-right: 1px solid var(--color-border);
+}
+
+/* Requests List Area */
+.layout-requests {
+  grid-area: requests;
+  background-color: var(--color-secondary);
+  padding: 0;
+  max-height: 164px;
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  isolation: isolate;
+}
+
+.layout-requests-inner {
+  padding: 12px 20px;
+  max-height: 164px;
+  overflow-y: auto;
+}
+
+/* Main Content Area */
+.layout-content {
+  margin-top: 0;
+  grid-area: content;
+  background-color: var(--color-content);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer */
+.layout-footer {
+  grid-area: footer;
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Block Labels for Wireframe Visualization */
+.block-label {
+  color: var(--font-color);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  min-width: 200px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-areas:
+      "nav"
+      "sidebar"
+      "content"
+      "requests"
+      "footer";
+    height: 100vh;
+  }
+
+
+  .layout-sidebar {
+    grid-row: auto;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    max-height: none;
+  }
+
+  .layout-content {
+    min-height: 300px;
+  }
+
+  .layout-requests {
+    max-height: 200px;
+    padding: 10px 15px;
+  }
+
+  .layout-footer {
+    padding: 12px 15px;
+  }
+
+  .block-label {
+    font-size: 16px;
+    padding: 15px;
+  }
+}
+
