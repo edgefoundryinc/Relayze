@@ -1,6 +1,6 @@
 # Posthook
 
-# Posthook
+![Alt text](https://posthook.app/assets/logo_dark-BflcgSrz.png)
 
 ## Instant, ephemeral, & secure webhook endpoints with edge-native real-time observation
 
