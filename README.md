@@ -1,6 +1,6 @@
 # Posthook
 
-![Alt text](https://posthook.app/assets/logo_dark-BflcgSrz.png)
+![Alt text](src/react/assets/img/logo.png)
 
 ## Instant, ephemeral, & secure webhook endpoints with edge-native real-time observation
 
@@ -50,7 +50,6 @@ Posthook uses a breakthrough pattern: **single URLs handle both POST (receive) a
 ```
 POST https://posthook.app/abc123  → Store webhook
 GET  https://posthook.app/abc123  → Retrieve webhooks
-WS   wss://posthook.app/abc123   → Real-time updates
 ```
 
 This is powered by Cloudflare Durable Objects for persistent edge state.
@@ -86,9 +85,6 @@ We love contributions! See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## 💼 Enterprise
 
-Need SSO, SLA, or on-premise deployment?
-
-→ [Contact us](https://posthook.app/enterprise)
 
 ## 📄 License
 
