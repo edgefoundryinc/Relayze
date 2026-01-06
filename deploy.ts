@@ -62,13 +62,13 @@ export default
     
     // Check if this request should be routed to a Durable Object
     const isWebSocket = request.headers.get('Upgrade') === 'websocket'
-    const isWebhookPath = url.pathname.startsWith('/h/') || url.pathname.startsWith('/post/')
+    const isWebhookPath = url.pathname.startsWith('/h/')
     
-    // Route WebSocket connections and POST webhooks to Durable Objects
-    if ((isWebSocket || request.method === 'POST') && isWebhookPath) {
+    // Route WebSocket connections, POST webhooks, and GET requests to /h/{slug} to Durable Objects
+    if ((isWebSocket || request.method === 'POST' || (request.method === 'GET' && isWebhookPath)) && isWebhookPath) {
       console.log('[WORKER] Routing to Durable Object:', url.pathname)
       
-      // Extract slug from path (/h/{slug} or /post/{slug})
+      // Extract slug from path (/h/{slug})
       const pathParts = url.pathname.split('/')
       const slug = pathParts[2]
       

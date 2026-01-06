@@ -213,7 +213,7 @@ export class WebhookReceiver {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Headers': 'Content-Type, X-API-Key, Authorization',
         },
       })
     }
@@ -223,12 +223,64 @@ export class WebhookReceiver {
       return this.handleWebSocket(request, url.pathname)
     }
     
+    // Handle GET - return stored events from D1
+    if (request.method === 'GET') {
+      return this.handleGetEvents(request, url.pathname)
+    }
+    
     // Handle POST webhook
     if (request.method === 'POST') {
       return this.handleWebhook(request, url.pathname)
     }
     
     return new Response('Method not allowed', { status: 405 })
+  }
+  
+  async handleGetEvents(request: Request, pathname: string): Promise<Response> {
+    try {
+      // Query events from D1 database for this pathname
+      const events = await queryEvents(this.env, { pathname, limit: 100, offset: 0 })
+      
+      console.log(`[DO] GET request - returning ${events.length} events for ${pathname}`)
+      
+      // Transform stored events to PostbackEvent format
+      const formattedEvents = events.map(e => ({
+        id: e.id,
+        trace_id: e.trace_id,
+        timestamp: e.timestamp,
+        method: e.method,
+        headers: JSON.parse(e.headers),
+        payload: JSON.parse(e.payload),
+        path: e.pathname,
+        ip: e.ip,
+        user_agent: e.user_agent
+      }))
+      
+      return new Response(JSON.stringify({
+        ok: true,
+        count: formattedEvents.length,
+        events: formattedEvents
+      }, null, 2), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+    } catch (err) {
+      console.error('[DO] Failed to get events:', err)
+      return new Response(JSON.stringify({
+        ok: false,
+        error: 'Failed to retrieve events',
+        reason: err instanceof Error ? err.message : String(err)
+      }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+    }
   }
   
   async handleWebSocket(request: Request, pathname: string): Promise<Response> {
