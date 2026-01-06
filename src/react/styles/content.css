@@ -3,14 +3,13 @@
 .layout-content {
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
 }
 
 .content-header {
   display: flex;
   justify-content: space-between;
   background: var(--color-secondary-2);
-  padding-top: 32px;
+  padding-top: 0;
   padding-left: 16px;
 }
 
@@ -20,7 +19,7 @@
 }
 
 .request-method-badge {
-  padding: 2px 4px;
+  padding: px 4px;
   border-radius: 4px;
   font-size: 12px;
   text-transform: uppercase;
@@ -65,7 +64,7 @@
   justify-content: space-between;
   background: var(--color-secondary-2);
   min-height: 48px;
-  padding-top: 38px;
+  padding-top: 0;
 }
 
 .tabs-group {
@@ -186,7 +185,7 @@
 
   .request-method-badge {
     font-size: 10px;
-    padding: 3px 6px;
+    margin-bottom: 12px;
   }
 
   .request-path-large {

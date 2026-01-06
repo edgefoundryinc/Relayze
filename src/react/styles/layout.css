@@ -53,6 +53,7 @@
 /* Main Content Area */
 .layout-content {
   margin-top: 0;
+  padding-top: 20px;
   grid-area: content;
   background-color: var(--color-content);
   overflow: hidden;

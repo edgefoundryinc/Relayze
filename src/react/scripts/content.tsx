@@ -69,9 +69,7 @@ function Content() {
     <main className="layout-content">
       <div className="content-header">
         <div className="request-info">
-          <span className={`request-method-badge ${parsedEvent.method.toLowerCase()}`}>
-            {parsedEvent.method}
-          </span>
+
         </div>
       </div>
 
