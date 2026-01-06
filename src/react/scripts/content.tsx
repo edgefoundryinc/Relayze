@@ -51,14 +51,14 @@ function Content() {
         <div className="content-viewer">
           <div style={{ 
             display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            height: '100%',
-            color: 'var(--font-color)',
-            fontSize: '14px',
-            opacity: 0.6
-          }}>
-            Send a request to your webhook URL and it will appear here
+            fontColor: 'var(--color-primary)',
+            fontSize: '96px',
+            paddingTop: '200px',
+            paddingRight: '100px',
+            fontFamily: 'monospace',
+            opacity: 0.2,
+             }}>
+            NO DATA YET
           </div>
         </div>
       </main>
@@ -71,10 +71,6 @@ function Content() {
         <div className="request-info">
           <span className={`request-method-badge ${parsedEvent.method.toLowerCase()}`}>
             {parsedEvent.method}
-          </span>
-          <span className="request-path-large">{parsedEvent.path || '/'}</span>
-          <span className="request-timestamp">
-            {new Date(parsedEvent.timestamp).toLocaleString()} • {parsedEvent.trace_id}
           </span>
         </div>
       </div>

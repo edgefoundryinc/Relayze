@@ -131,6 +131,8 @@
   border-radius: 6px;
   font-size: 14px;
   font-family: monospace;
+  margin-top: 6px;
+
 }
 
 .url-loading {
@@ -257,12 +259,7 @@
   }
 }
 
-/* Generic icon styles (if needed for other buttons) */
-.icon-img {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.5s ease;
-}
+
 
 /* Hook icon specific for Generate URL button */
 .icon-hook {
@@ -312,117 +309,80 @@
 }
 
 
-/* Endpoint Status */
-.endpoint-status {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-accent);
-  font-size: 13px;
-  background: rgba(95, 194, 105, 0.1);
-  padding: 8px 12px;
-  border-radius: 6px;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-accent);
-  border-radius: 50%;
-}
-
-/* WebSocket Status Section */
-.websocket-status-section {
+/* WebSocket Card */
+.websocket-card {
+  width: 100%;
+  background: var(--color-input);
+  border-radius: 8px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-  background: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 12px;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
-.websocket-status-header {
+.websocket-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4px;
 }
 
 .websocket-title {
   color: var(--font-color);
-  font-size: 13px;
+  font-size: 14px;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.ws-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-.websocket-status-items {
+.ws-badge.ws-live {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.ws-badge.ws-offline {
+  background: var(--color-border);
+  color: var(--font-color);
+  opacity: 0.6;
+}
+
+.ws-stat {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.websocket-status-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--font-color);
-  font-size: 12px;
-}
-
-.websocket-status-item.websocket-url {
-  flex-wrap: wrap;
   gap: 4px;
 }
 
-.status-indicator {
+.ws-stat-label {
+  color: var(--font-color);
   font-size: 10px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-}
-
-.status-indicator.connected {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-.status-indicator.disconnected {
-  opacity: 0.7;
-}
-
-.websocket-status-text {
-  color: var(--font-color);
-  font-size: 12px;
-}
-
-.websocket-icon {
-  font-size: 12px;
-  line-height: 1;
-}
-
-.websocket-label {
-  color: var(--font-color);
-  font-size: 11px;
-  opacity: 0.7;
-  font-weight: 600;
-}
-
-.websocket-url-text {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   font-family: monospace;
-  font-size: 10px;
+}
+
+.ws-stat-value {
   color: var(--font-color);
-  opacity: 0.8;
-  word-break: break-all;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: monospace;
+
+}
+
+.ws-stat-value.ws-success {
+  color: var(--color-accent);
+}
+
+.ws-stat-value.ws-count {
+  color: var(--color-quaternary);
+  font-size: 24px;
+  font-weight: 700;
 }
 
 /* URL Controls Section */
@@ -430,18 +390,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-}
-
-.method-select {
-  width: 100%;
-  padding: 12px 16px;
-  background: var(--color-tertiary);
-  color: var(--font-color);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
 }
 
 .btn-send-test {

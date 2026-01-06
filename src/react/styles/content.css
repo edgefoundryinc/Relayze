@@ -9,15 +9,12 @@
 .content-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background: var(--color-secondary-2);
   padding-top: 32px;
   padding-left: 16px;
 }
 
 .request-info {
-  display: flex;
-  align-items: center;
   gap: var(--spacing-xs);
   
 }
@@ -33,18 +30,13 @@
 .request-method-badge.post {
   background: var(--color-accent);
   color: #000;
+  font-family: monospace;
+
 }
 
-.request-path-large {
-  color: var(--font-color);
-  font-size: 15px;
-  font-weight: 500;
-}
 
-.request-timestamp {
-  color: var(--font-color);
-  font-size: 12px;
-}
+
+
 
 .content-actions {
   display: flex;
@@ -100,7 +92,7 @@
 
 .tab.active {
   color: var(--font-color);
-  border-bottom-color: var(--color-quaternary);
+  background: var(--color-primary); 
 }
 
 .tab-count {
@@ -111,8 +103,8 @@
 
 /* Code Viewer */
 .content-viewer {
-  flex: 1;
   display: flex;
+  width: 800px;
   flex-direction: column;
   overflow: hidden;
   background: var(--color-primary);

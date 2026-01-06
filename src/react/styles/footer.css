@@ -5,9 +5,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 64px;
-  height: 24px;
-  background-color: var(--color-footer);
+  background-color: #121517;
+  height: 100%;
 }
 
 .footer-usage {
@@ -16,6 +15,7 @@
   gap: 12px;
   color: var(--font-color);
   font-size: 13px;
+  padding-left: 24px;
 }
 
 .usage-label {
@@ -37,6 +37,10 @@
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
+  margin-right: 60px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
 }
 
 .btn-upgrade:hover {

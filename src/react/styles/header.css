@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-xs);
+  gap: 48px;
   width: 100%;
   padding: 24px 20px;
 }
@@ -19,7 +19,7 @@
 }
 
 .logo-image {
-  height: 20px;
+  height: 32px;
 }
 
 .logo-icon {
@@ -28,7 +28,7 @@
 
 .nav-links {
   display: flex;
-  gap: var(--spacing-2xl);
+  gap: 54px;
   margin-left: var(--spacing-2xl);
   flex: 1;
 }
@@ -209,8 +209,8 @@
 }
 
 .icon-img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 
@@ -251,7 +251,7 @@
   }
 
   .logo-image {
-    height: 28px;
+    height: 32px;
   }
 
   .nav-links {

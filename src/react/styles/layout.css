@@ -64,11 +64,10 @@
 .layout-footer {
   grid-area: footer;
   background-color: var(--color-secondary);
-  display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
   border-top: 1px solid var(--color-border);
+  height: 86px;
 }
 
 /* Block Labels for Wireframe Visualization */

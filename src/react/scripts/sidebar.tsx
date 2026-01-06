@@ -85,35 +85,15 @@ function Sidebar() {
         </select>
       </div>*/}
 
-      {/* WebSocket Status Section */}
-      <div className="websocket-status-section">
-        <div className="websocket-status-header">
+      {/* WebSocket Status */}
+      <div className="websocket-card">
+        <div className="websocket-header">
           <span className="websocket-title">WebSocket</span>
+          <span className={`ws-badge ${wsConnected ? 'ws-live' : 'ws-offline'}`}>
+            {wsConnected ? 'LIVE' : 'OFFLINE'}
+          </span>
         </div>
-        <div className="websocket-status-items">
-          <div className="websocket-status-item">
-            <span className={`status-indicator ${wsConnected ? 'connected' : 'disconnected'}`}>
-              {wsConnected ? '🟢' : '🔴'}
-            </span>
-            <span className="websocket-status-text">
-              {wsConnected ? 'Connected' : wsError ? 'Disconnected' : 'Connecting...'}
-            </span>
-          </div>
-          {wsConnected && (
-            <div className="websocket-status-item websocket-url">
-              <span className="websocket-label">URL:</span>
-              <span className="websocket-url-text">
-                wss://{window.location.host}/h/{slug}
-              </span>
-            </div>
-          )}
-          <div className="websocket-status-item">
-            <span className="websocket-icon">📊</span>
-            <span className="websocket-status-text">
-              {events.length} {events.length === 1 ? 'event' : 'events'} received
-            </span>
-          </div>
-        </div>
+       
       </div>
     </aside>
   )

@@ -4,10 +4,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
   border-bottom: var(--color-border);
   top: 0;
   background-color: var(--color-secondary);
+  padding-bottom: 12px;
 }
 
 .requests-title {
@@ -22,18 +22,18 @@
   color: var(--font-color);
   font-size: 11px;
   font-family: monospace;
+  padding-right: 52px;
 }
 
 .requests-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 12px;
   font-family: monospace;
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .request-line {
-  padding: 8px 12px;
   color: var(--font-color);
   cursor: pointer;
   white-space: nowrap;
@@ -48,10 +48,13 @@
 }
 
 .request-line.active {
-  background: var(--color-tertiary);
+  background: var(--color-header);
   color: var(--font-color);
   border-left: 2px solid var(--color-accent);
   padding-left: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 96%;
 }
 
 /* Mobile Responsive Styles */

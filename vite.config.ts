@@ -20,6 +20,34 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
+  },
+  server: {
+    port: 3001,
+    open: true,
+    proxy: {
+      '/h/rate-limit-check': {
+        target: 'https://posthook.app',
+        changeOrigin: true,
+      },
+      '/h/': {
+        target: 'https://posthook.app',
+        changeOrigin: true,
+        ws: true, // Enable WebSocket proxying
+      },
+      '/post/': {
+        target: 'https://posthook.app',
+        changeOrigin: true,
+      },
+      '/events': {
+        target: 'https://posthook.app',
+        changeOrigin: true,
+      },
+      '/trace/': {
+        target: 'https://posthook.app',
+        changeOrigin: true,
+      }
+    }
   }
 })
+
 
