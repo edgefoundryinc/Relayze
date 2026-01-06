@@ -8,10 +8,22 @@ import type { StorageEnv } from './src/shared/storage'
 export { WebhookReceiver } from './src/shared/reciever'
 export { RateLimiter } from './src/shared/rate-limiter'
 
+// Cloudflare Workers types (available at runtime)
+interface DurableObjectNamespace {
+  idFromName(name: string): any
+  get(id: any): any
+}
+
+interface Fetcher {
+  fetch(request: Request): Promise<Response>
+}
+
 // Extend StorageEnv to include Durable Object bindings
 export interface Env extends StorageEnv {
   WEBHOOK_RECEIVER: DurableObjectNamespace
   RATE_LIMITER: DurableObjectNamespace
+  ASSETS: Fetcher // Cloudflare Pages/Assets binding for React app
+  AUTH_SECRET?: string // Optional API key for unlimited webhook usage
 }
 
 export default 
@@ -94,23 +106,45 @@ export default
     
     // Allow GET for post reads, feed, trace, and events
     if (request.method === 'GET' && (isPostRequest || isFeedRequest || isTraceRequest || isEventsRequest)) {
-      // Valid request
+      // Valid request - pass to API handler
       ctx = step(ctx, 'receive', 'exit')
       console.log(ctx)
-    } else {
-      // Invalid method
-      ctx = step(ctx, 'receive', 'error', { 
-        error_code: 'METHOD_NOT_ALLOWED', 
-        reason: `Method ${request.method} not supported for ${url.pathname}` 
-      })
-      console.log(ctx)
-      return new Response('Unauthorized Method', {
-        status: 405,
-        headers: { 'Content-Type': 'text/plain' }
-      })
+      return handleRequest(request, env)
     }
-
-    // Pass to handler with env for D1 access
-    return handleRequest(request, env)
+    
+    // Serve React app for all other GET requests
+    if (request.method === 'GET') {
+      try {
+        // Try to fetch the requested asset (JS, CSS, images, etc.)
+        const assetResponse = await env.ASSETS.fetch(request)
+        
+        // If asset found, return it
+        if (assetResponse.status < 400) {
+          return assetResponse
+        }
+        
+        // If asset not found, return index.html (for React Router SPA routes)
+        // This handles routes like /docs, /pricing, /login, /signup, etc.
+        const indexRequest = new Request(new URL('/', request.url), request)
+        return env.ASSETS.fetch(indexRequest)
+      } catch (error) {
+        console.error('[WORKER] Asset serving error:', error)
+        return new Response('Error loading page', { 
+          status: 500,
+          headers: { 'Content-Type': 'text/plain' }
+        })
+      }
+    }
+    
+    // Only reject if it's not a GET request and not a valid API endpoint
+    ctx = step(ctx, 'receive', 'error', { 
+      error_code: 'METHOD_NOT_ALLOWED', 
+      reason: `Method ${request.method} not supported for ${url.pathname}` 
+    })
+    console.log(ctx)
+    return new Response('Method not allowed', {
+      status: 405,
+      headers: { 'Content-Type': 'text/plain' }
+    })
   }
 }

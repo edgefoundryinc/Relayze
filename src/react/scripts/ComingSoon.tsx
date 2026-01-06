@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../styles/comingsoon.css'
-import logoDark from '../../assets/img/logo_dark.png'
+import logoDark from '../assets/img/logo_dark.png'
 
 interface ComingSoonProps {
   title: string

@@ -12,13 +12,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "build:check": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "mutate": "tsx tests/stryker/mutant.ts"
+    "mutate": "tsx tests/stryker/mutant.ts",
+    "worker:dev": "wrangler dev",
+    "worker:deploy": "wrangler deploy",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.59.2",

@@ -2,8 +2,8 @@ import '../styles/sidebar.css'
 import { useState } from 'react'
 import { useWebhook } from '../contexts/WebhookContext'
 import { useNotifications } from '../contexts/NotificationContext'
-import copyIcon from '../../assets/img/copy.png'
-import hookIcon from '../../assets/img/hook.png'
+import copyIcon from '../assets/img/copy.png'
+import hookIcon from '../assets/img/hook.png'
 
 function Sidebar() {
   const { slug, copied, generateSlug, copyToClipboard, events, wsConnected, wsError } = useWebhook()

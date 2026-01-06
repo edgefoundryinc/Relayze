@@ -7,7 +7,7 @@
 
 import { StorageEnv, storeEvent, queryEvents } from './storage'
 import { createEnv, step } from '../debug/trace'
-import type { Context, PostbackEvent } from './types'
+import type { Context, PostbackEvent } from '../../types/types'
 
 // Cloudflare Workers types (available at runtime)
 declare const WebSocketPair: any
@@ -25,9 +25,10 @@ interface ResponseInit {
   webSocket?: any
 }
 
-// Extended env with rate limiter
+// Extended env with rate limiter and optional auth secret
 export interface WebhookEnv extends StorageEnv {
   RATE_LIMITER: DurableObjectNamespace
+  AUTH_SECRET?: string // Optional API key for unlimited usage
 }
 
 export class WebhookReceiver {
@@ -56,14 +57,19 @@ export class WebhookReceiver {
   }
   
   /**
-   * Extract Clerk user ID from request headers
+   * Extract user ID from request headers (Clerk or API key)
    */
   private getUserId(request: Request): string | null {
-    // Clerk sends user ID in Authorization header or custom header
+    // Check for API key auth first (for unlimited usage)
+    const apiKey = request.headers.get('x-api-key') || request.headers.get('authorization')?.replace('Bearer ', '')
+    if (apiKey && this.env.AUTH_SECRET && apiKey === this.env.AUTH_SECRET) {
+      return 'api_authenticated' // Return special user ID for API auth
+    }
+    
+    // Clerk authentication
     const authHeader = request.headers.get('authorization')
-    if (authHeader?.startsWith('Bearer ')) {
+    if (authHeader?.startsWith('Bearer ') && !this.env.AUTH_SECRET) {
       // You'd decode the JWT here in production
-      // For now, check for a custom header
       return request.headers.get('x-clerk-user-id') || null
     }
     return request.headers.get('x-clerk-user-id') || null

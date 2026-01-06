@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import type { PostbackEvent } from '../../shared/types'
+import type { PostbackEvent } from '../../../types/types'
 
 interface UseWebSocketReturn {
   events: PostbackEvent[]

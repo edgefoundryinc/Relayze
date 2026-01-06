@@ -1,4 +1,4 @@
-import { createEnv } from '../trace_validation'
+import { createEnv } from '../trace'
 
 function selfTest() {
   const contexts = []

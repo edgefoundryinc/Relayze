@@ -1,4 +1,4 @@
-import { createEnv, step } from '../trace_validation'
+import { createEnv, step } from '../trace'
 
 function selfTest() {
   console.log('🛡️  ADVERSARIAL TEST: Testing guardrails\n')

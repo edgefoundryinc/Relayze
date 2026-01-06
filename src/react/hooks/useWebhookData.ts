@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import type { PostbackEvent } from '../../shared/types'
+import type { PostbackEvent } from '../../../types/types'
 import { useWebSocket } from './useWebSocket'
 import { useNotifications } from '../contexts/NotificationContext'
 

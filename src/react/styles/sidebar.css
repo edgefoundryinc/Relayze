@@ -264,6 +264,20 @@
   transition: transform 0.5s ease;
 }
 
+/* Hook icon specific for Generate URL button */
+.icon-hook {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 0px rgba(139, 92, 246, 0));
+}
+
+/* Hook hover effect */
+.btn-generate-url:hover .icon-hook {
+  transform: rotate(15deg) scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6));
+}
+
 /* Wand icon specific for Generate URL button */
 .icon-wand {
   width: 18px;

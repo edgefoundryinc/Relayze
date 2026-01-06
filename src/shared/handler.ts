@@ -6,7 +6,7 @@
  */
 
 import { createEnv, step, replay } from '../debug/trace'
-import type { Context } from './types'
+import type { Context } from '../../types/types'
 import { storeEvent, queryEvents, type StorageEnv } from './storage'
 
 // In-memory storage removed - using D1 as source of truth

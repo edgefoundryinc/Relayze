@@ -1,4 +1,4 @@
-import type { TraceRecord, EnvRecord, StepRecord, Context } from './types'
+import type { TraceRecord, EnvRecord, StepRecord, Context } from '../../types/types'
 
 const log: TraceRecord[] = []
 

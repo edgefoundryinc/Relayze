@@ -1,4 +1,4 @@
-import type { TraceRecord, Context } from './src/types'
+import type { TraceRecord, Context } from '../../types/types'
 
 const log: TraceRecord[] = []
 

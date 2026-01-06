@@ -111,9 +111,9 @@ export interface PostbackEvent extends Id & Traced {
   timestamp: string
   /* http method of request */
   method: HttpMethod
-  /* headers of request Can be stringified JSON or parsed object */
+  /* headers of request - can be stringified JSON or parsed object */
   headers: RequestHeaders | string
-  /* payload of event Can be stringified JSON or parsed object */
+  /* payload of event - can be stringified JSON or parsed object */
   payload: Payload | string         
   /* query of event */
   query?: Record<string, string>
