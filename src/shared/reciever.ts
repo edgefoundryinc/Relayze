@@ -395,6 +395,22 @@ export class WebhookReceiver {
       })
     }
     
+    // Check if this is an internal test request - skip storage and broadcast
+    if (payload && typeof payload === 'object' && payload._test === 'rate_limit_check') {
+      console.log('[DO] ⚠️  Test request detected - skipping storage and broadcast')
+      return new Response(JSON.stringify({ 
+        ok: true,
+        test: true,
+        message: 'Rate limit check passed - not stored',
+        trace_id: ctx.trace_id
+      }), {
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+    }
+    
     const processingTimeMs = Date.now() - startTime
     
     // Store to D1 database

@@ -1,1 +1,1 @@
-This folder contains the built output assets for the worker "posthook" generated at 2026-01-06T02:02:24.936Z.
+This folder contains the built output assets for the worker "posthook" generated at 2026-01-06T15:12:38.531Z.
