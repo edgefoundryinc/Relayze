@@ -23,7 +23,7 @@ function Header() {
             <span className="live-dot"></span>
             Systems Operational
           </span>*/}
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="github-link">
+          <a href="https://github.com/edgefoundryinc/Posthook" target="_blank" rel="noopener noreferrer" className="github-link">
             <img src={githubLogo} alt="GitHub" className="github-icon" />
           </a>
           
