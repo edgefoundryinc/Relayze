@@ -12,7 +12,7 @@
 
 Posthook gives you instant webhook URLs that update in real-time via WebSockets. Built on Cloudflare's edge network for sub-50ms latency worldwide.
 
-## ✨ Features
+## Features
 
 - **Instant URLs**: Generate webhook endpoints in milliseconds
 - **Real-time updates**: See webhooks appear live via WebSocket
@@ -38,13 +38,13 @@ npm run deploy
 
 [Full self-hosting guide →](docs/self-hosting.md)
 
-## 💡 Why Posthook?
+## Why Posthook?
 
 **vs ngrok**: No tunneling required, works at the edge
 **vs RequestBin**: Real-time WebSocket updates, not polling
 **vs Webhook.site**: Open source, self-hostable, faster
 
-## 🏗️ Architecture
+## Architecture
 
 Posthook uses a breakthrough pattern: **single URLs handle both POST (receive) and GET (retrieve)**
 ```
@@ -56,14 +56,14 @@ This is powered by Cloudflare Durable Objects for persistent edge state.
 
 [Read the architecture docs →](docs/architecture.md)
 
-## 📊 Use Cases
+## Use Cases
 
 - **Stripe webhook testing**: Test payment flows locally
 - **Shopify app development**: Debug order webhooks
 - **GitHub Actions**: Monitor workflow events
 - **API integration testing**: Validate third-party webhooks
 
-## 🛠️ Development
+## Development
 ```bash
 npm install
 npm run dev         # Start local dev server
@@ -71,11 +71,11 @@ npm run test        # Run tests
 npm run deploy      # Deploy to Cloudflare
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We love contributions! See [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## 📈 Roadmap
+## Roadmap
 
 - [ ] Webhook forwarding
 - [ ] Custom domains
@@ -83,10 +83,10 @@ We love contributions! See [CONTRIBUTING.md](CONTRIBUTING.md)
 - [ ] Request filtering
 - [ ] Analytics dashboard
 
-## 💼 Enterprise
+## Enterprise
 
 
-## 📄 License
+## License
 
 Business Source License 1.1 (converts to Apache 2.0 after 2 years)
 
@@ -98,13 +98,13 @@ This means:
 
 [Read full license →](LICENSE)
 
-## 🙏 Credits
+## Credits
 
 Built by [@ab_edge](https://twitter.com/ab_eddge) at Edge Foundry, Inc.
 
 ---
 
-**⭐ If you find this useful, star the repo!**
+**If you find this useful, star the repo!**
 
 ## Contributing
 
