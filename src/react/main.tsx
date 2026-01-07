@@ -1,26 +1,26 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import { ClerkProvider } from '@clerk/clerk-react'
+import { ThemeProvider } from './contexts/ThemeContext'
 
-// Import your Clerk publishable key (optional - app works without it)
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+// Normalize the Clerk key: remove quotes, trim whitespace
+const rawKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const PUBLISHABLE_KEY = rawKey 
+  ? rawKey.trim().replace(/^['"]|['"]$/g, '') 
+  : undefined
 
-console.log('ENV CHECK:', {
-  key: PUBLISHABLE_KEY ? 'EXISTS' : 'MISSING (running without auth)',
-  allEnv: import.meta.env
-})
-
-// Render app with or without Clerk based on key availability
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    {PUBLISHABLE_KEY ? (
-      <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ThemeProvider>
+      {PUBLISHABLE_KEY ? (
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+          <App />
+        </ClerkProvider>
+      ) : (
         <App />
-      </ClerkProvider>
-    ) : (
-      <App />
-    )}
-  </React.StrictMode>,
+      )}
+    </ThemeProvider>
+  </StrictMode>
 )
 
