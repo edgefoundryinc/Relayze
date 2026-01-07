@@ -1,7 +1,7 @@
 /* Grid Layout Container */
 .layout-grid {
   display: grid;
-  grid-template-columns: 496px 1fr;
+  grid-template-columns: 432px 1fr;
   grid-template-rows: auto 1fr auto auto;
   grid-template-areas:
     "nav nav"
@@ -18,45 +18,51 @@
 .layout-nav {
   grid-area: nav;
   background-color: var(--color-header);
-  border-bottom: 1px solid var(--color-border);
 }
 
 /* Sidebar - Contains URL section */
 .layout-sidebar {
   grid-area: sidebar;
+  margin-top: 42px;
+
   background-color: var(--color-sidebar);
   display: flex;
   flex-direction: column;
   grid-row: 2 / 4;
   padding: 30px;
-  border-right: 1px solid var(--color-border);
 }
 
 /* Requests List Area */
 .layout-requests {
   grid-area: requests;
-  background-color: var(--color-secondary);
+  background-color: var(--color-requests);
   padding: 0;
-  max-height: 164px;
+  max-height: 450px;
   overflow: hidden;
   border-top: 1px solid var(--color-border);
-  position: relative;
-  isolation: isolate;
+  margin-bottom: 32px;
 }
 
 .layout-requests-inner {
   padding: 12px 20px;
-  max-height: 164px;
+  max-height: 350px;
   overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.layout-requests-inner::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
 }
 
 /* Main Content Area */
 .layout-content {
   margin-top: 0;
-  padding-top: 20px;
+  padding-top: 68px;
   grid-area: content;
   background-color: var(--color-content);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -64,11 +70,10 @@
 /* Footer */
 .layout-footer {
   grid-area: footer;
-  background-color: var(--color-secondary);
+  background-color: var(--color-footer);
   align-items: center;
   justify-content: center;
-  border-top: 1px solid var(--color-border);
-  height: 86px;
+  height: 98px;
 }
 
 /* Block Labels for Wireframe Visualization */
@@ -100,8 +105,6 @@
   .layout-sidebar {
     grid-row: auto;
     padding: 15px;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
     max-height: none;
   }
 

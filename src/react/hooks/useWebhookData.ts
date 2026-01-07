@@ -65,7 +65,7 @@ export function useWebhookData() {
         return // Don't switch to new slug
       }
     } catch (err) {
-      console.error('Rate limit check failed:', err)
+      // Silently handle rate limit check failure
     }
     
     setSlug(newSlug)
@@ -79,7 +79,7 @@ export function useWebhookData() {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
-      console.error('Failed to copy:', err)
+      // Silently handle clipboard errors
     }
   }, [slug])
 

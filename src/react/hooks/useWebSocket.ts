@@ -31,7 +31,6 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
 
   const connect = useCallback((targetSlug: string) => {
     if (!targetSlug) {
-      console.log('[WebSocket] No slug provided, skipping connection')
       return
     }
     
@@ -40,12 +39,10 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
       const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
       const wsUrl = `${protocol}//${window.location.host}/h/${targetSlug}`
       
-      console.log('[WebSocket] Connecting to:', wsUrl)
       const socket = new WebSocket(wsUrl)
       wsRef.current = socket
       
       socket.addEventListener('open', () => {
-        console.log('[WebSocket] ✅ Connected!')
         setConnected(true)
         setError(null)
         reconnectAttemptsRef.current = 0 // Reset reconnect attempts on successful connection
@@ -57,34 +54,29 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
           
           // Handle history message (sent on connect)
           if (data.type === 'history') {
-            console.log('[WebSocket] 📚 Received history:', data.events.length, 'events')
             // Events come from D1 in DESC order (newest first), keep that order
             setEvents(data.events)
           } 
           // Handle new event broadcast
           else {
-            console.log('[WebSocket] 📨 New event:', data.id)
             // Prepend new event to the beginning (newest first)
             setEvents(prev => [data, ...prev])
           }
         } catch (err) {
-          console.error('[WebSocket] Failed to parse message:', err)
+          // Silently handle parse errors
         }
       })
       
-      socket.addEventListener('error', (err) => {
-        console.error('[WebSocket] ❌ Error:', err)
+      socket.addEventListener('error', () => {
         setError('Connection error')
       })
       
       socket.addEventListener('close', (event) => {
-        console.log('[WebSocket] 🔌 Disconnected (code:', event.code, ')')
         setConnected(false)
         wsRef.current = null
         
         // Don't auto-reconnect if manually closed (code 1000)
         if (event.code === 1000) {
-          console.log('[WebSocket] Normal closure, not reconnecting')
           return
         }
         
@@ -94,8 +86,6 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
           const attempt = reconnectAttemptsRef.current
           const delay = Math.min(1000 * Math.pow(2, attempt), 30000) // Max 30 seconds
           
-          console.log(`[WebSocket] Reconnecting in ${delay}ms (attempt ${attempt + 1})`)
-          
           reconnectTimeoutRef.current = window.setTimeout(() => {
             reconnectAttemptsRef.current++
             connect(targetSlug)
@@ -103,7 +93,6 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
         }
       })
     } catch (err) {
-      console.error('[WebSocket] Failed to create connection:', err)
       setError('Failed to connect')
       setConnected(false)
     }
@@ -111,7 +100,6 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
 
   // Clear events and reset state when slug changes
   useEffect(() => {
-    console.log('[WebSocket] Slug changed to:', slug)
     currentSlugRef.current = slug
     
     // Immediately clear events for new slug
@@ -122,7 +110,6 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
     
     // Close existing connection if any
     if (wsRef.current) {
-      console.log('[WebSocket] Closing old connection for slug change')
       // Use code 1000 (normal closure) to signal intentional disconnect
       wsRef.current.close(1000, 'Switching to new slug')
       wsRef.current = null
@@ -144,7 +131,6 @@ export function useWebSocket(slug: string): UseWebSocketReturn {
         reconnectTimeoutRef.current = null
       }
       if (wsRef.current) {
-        console.log('[WebSocket] Cleaning up connection')
         wsRef.current.close(1000, 'Component cleanup')
         wsRef.current = null
       }

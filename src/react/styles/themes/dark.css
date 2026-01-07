@@ -1,0 +1,38 @@
+/* Dark Theme Colors */
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+:root[data-theme="dark"] {
+  /* === Colors === */
+  --color-primary: #181c1f;
+  --color-secondary: #181c1f;
+  --color-secondary-2: #181c1f;
+  --color-tertiary: #181c1f;
+  --color-quaternary: #5248dd;
+  --color-accent: #5fc269;
+
+  --color-header: #000000;
+  --color-requests: #181c1f;
+  --color-footer: #000000;
+  --color-sidebar: #181c1f;
+  --color-button: #070708;
+  --color-button-2: #070708;
+  --color-input: #121517;
+  --color-content: #181c1f;
+  --color-tabs: #090a0b;
+  --color-tabs-2: #121517;
+  --color-content-footer: #181c1f;
+  --font-color: #ffffff;
+  --color-border: #12151700;
+
+  --group-1: #000000; /* Header */
+  --group-2: #181c1f; /* Sidebar, Primary */
+  --group-3: #181c1f;
+
+
+  /* === Gradients === */
+  --color-gradient-start: #6358dc;
+  --color-gradient-middle: #8b5cf6;
+  --color-gradient-end: #6358dc;
+  --color-gradient: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-middle), var(--color-gradient-end));
+}
+

@@ -2,12 +2,15 @@ import '../styles/sidebar.css'
 import { useState } from 'react'
 import { useWebhook } from '../contexts/WebhookContext'
 import { useNotifications } from '../contexts/NotificationContext'
-import copyIcon from '../assets/img/copy.png'
+import { useTheme } from '../contexts/ThemeContext'
+import copyIconDark from '../assets/img/copy.png'
+import copyIconLight from '../assets/img/copy-light.png'
 import hookIcon from '../assets/img/hook.png'
 
 function Sidebar() {
   const { slug, copied, generateSlug, copyToClipboard, events, wsConnected, wsError } = useWebhook()
   const { showNotification } = useNotifications()
+  const { theme } = useTheme()
   const [isGenerating, setIsGenerating] = useState(false)
 
   const handleGenerateSlug = async () => {
@@ -64,7 +67,11 @@ function Sidebar() {
                   title={copied ? "Copied!" : "Copy"}
                   onClick={copyToClipboard}
                 >
-                  <img src={copyIcon} alt="Copy" className={`icon-copy ${copied ? 'icon-copied' : ''}`} />
+                  <img 
+                    src={theme === 'dark' ? copyIconDark : copyIconLight} 
+                    alt="Copy" 
+                    className={`icon-copy ${copied ? 'icon-copied' : ''}`} 
+                  />
                   {copied && <span className="copied-tooltip">Copied!</span>}
                 </button>
               </>

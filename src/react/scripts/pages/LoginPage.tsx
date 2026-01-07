@@ -1,11 +1,16 @@
-import ComingSoon from '../ComingSoon'
+import { SignIn } from '@clerk/clerk-react'
 
 function LoginPage() {
   return (
-    <ComingSoon 
-      title="Login"
-      description="Secure authentication to access your Posthook dashboard. Manage your webhook endpoints and view request history."
-    />
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100vh',
+      overflow: 'visible',
+    }}>
+      <SignIn />
+    </div>
   )
 }
 

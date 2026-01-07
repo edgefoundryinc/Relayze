@@ -1,0 +1,33 @@
+/* Light Theme Colors */
+html[data-theme="light"],
+html[data-theme="light"] body,
+:root[data-theme="light"] {
+  /* === Colors === */
+  --color-primary: #ffffff;
+  --color-secondary: #f5f5f5;
+  --color-secondary-2: #ffffff;
+  --color-tertiary: #eeeeee;
+  --color-quaternary: #5248dd;
+  --color-accent: #5fc269;
+
+  --color-header: #ecebed;
+  --color-requests: #ffffff;
+  --color-footer: #ecebed;
+  --color-sidebar: #ffffff;
+  --color-button: #f5f5f5;
+  --color-button-2: #eeeeee;
+  --color-input: #ecebed;
+  --color-content: #ffffff;
+  --color-tabs: #ffffff;
+  --color-tabs-2: #ecebed;
+  --color-content-footer: #ecebed;
+  --font-color: #000000;
+  --color-border: #ecebed;
+
+  /* === Gradients === */
+  --color-gradient-start: #6358dc;
+  --color-gradient-middle: #8b5cf6;
+  --color-gradient-end: #6358dc;
+  --color-gradient: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-middle), var(--color-gradient-end));
+}
+

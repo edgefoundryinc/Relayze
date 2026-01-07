@@ -1,13 +1,12 @@
 /* Requests Section */
 
 .requests-header {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: var(--color-border);
-  top: 0;
-  background-color: var(--color-secondary);
+  background-color: var(--color-requests);
   padding-bottom: 12px;
+  margin: 12px 0;
 }
 
 .requests-title {
@@ -39,7 +38,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: background 0.1s ease;
 }
 
 .request-line:hover {
