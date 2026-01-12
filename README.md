@@ -1,16 +1,14 @@
-# Posthook
-
-![Alt text](src/react/assets/img/logo.png)
+# Relayze
 
 ## Instant, ephemeral, & secure webhook endpoints with edge-native real-time observation
 
 > **Real-time webhook testing and debugging at the edge**
 
-[![GitHub Stars](https://img.shields.io/github/stars/edgefoundry/posthook)](https://github.com/edgefoundryinc/posthook)
+[![GitHub Stars](https://img.shields.io/github/stars/edgefoundry/Relayze)](https://github.com/edgefoundryinc/Relayze)
 [![License](https://img.shields.io/badge/license-BUSL%201.1-blue)](LICENSE)
 [![Deploy](https://img.shields.io/badge/deploy-cloudflare-orange)](docs/self-hosting.md)
 
-Posthook gives you instant webhook URLs that update in real-time via WebSockets. Built on Cloudflare's edge network for sub-50ms latency worldwide.
+Relayze gives you instant webhook URLs that update in real-time via WebSockets. Built on Cloudflare's edge network for sub-50ms latency worldwide.
 
 ## Features
 
@@ -25,20 +23,20 @@ Posthook gives you instant webhook URLs that update in real-time via WebSockets.
 ### Cloud (Fastest)
 ```bash
 # Just visit:
-https://posthook.app
+https://Relayze.app
 ```
 
 ### Self-Hosted (Free Forever)
 ```bash
-git clone https://github.com/edgefoundryinc/posthook
-cd posthook
+git clone https://github.com/edgefoundryinc/Relayze
+cd Relayze
 npm install
 npm run deploy
 ```
 
 [Full self-hosting guide →](docs/self-hosting.md)
 
-## Why Posthook?
+## Why Relayze?
 
 **vs ngrok**: No tunneling required, works at the edge
 **vs RequestBin**: Real-time WebSocket updates, not polling
@@ -46,10 +44,10 @@ npm run deploy
 
 ## Architecture
 
-Posthook uses a breakthrough pattern: **single URLs handle both POST (receive) and GET (retrieve)**
+Relayze uses a breakthrough pattern: **single URLs handle both POST (receive) and GET (retrieve)**
 ```
-POST https://posthook.app/abc123  → Store webhook
-GET  https://posthook.app/abc123  → Retrieve webhooks
+POST https://Relayze.app/abc123  → Store webhook
+GET  https://Relayze.app/abc123  → Retrieve webhooks
 ```
 
 This is powered by Cloudflare Durable Objects for persistent edge state.
@@ -108,7 +106,7 @@ Built by [@ab_edge](https://twitter.com/ab_eddge) at Edge Foundry, Inc.
 
 ## Contributing
 
-Posthook is licensed under BUSL 1.1. We welcome contributions!
+Relayze is licensed under BUSL 1.1. We welcome contributions!
 
 By submitting a PR, you agree that:
 - Your contribution will be licensed under BUSL 1.1
