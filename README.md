@@ -18,7 +18,7 @@ Relayze gives you instant webhook URLs that update in real-time via WebSockets. 
 - **Zero config**: No setup required, works immediately
 - **Self-hostable**: Deploy to your own Cloudflare account in 5 minutes
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Cloud (Fastest)
 ```bash
